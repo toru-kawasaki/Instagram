@@ -13,10 +13,13 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     // 投稿データを格納する配列
     var postArray: [PostData] = []
+    var commentArray: [CommentData] = []
     
     // Firestoreのリスナー
     var listener: ListenerRegistration?
-    
+    //追加　コメント用のリスナー
+    var commentListener: ListenerRegistration?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,10 +39,28 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
-
-        // セル内のボタンのアクションをソースコードで設定する
+        // セル内のコメントボタンのアクションをソースコードで設定する
+        cell.commentButton.addTarget(self, action:#selector(handleCommentButton(_:forEvent:)), for: .touchUpInside)
+        // セル内のボタンのいいねボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
         return cell
+    }
+    //追加
+    // セル内のコメントボタンがタップされた時に呼ばれるメソッド
+    @objc func handleCommentButton(_ sender: UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: commentボタンがタップされました。")
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        
+        // コメント画面を開く
+        let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
+        commentViewController.imageId = postData.id
+        self.present(commentViewController, animated: true, completion: nil)
     }
     
     // セル内のボタンがタップされた時に呼ばれるメソッド
@@ -92,13 +113,32 @@ class HomeViewController: UIViewController , UITableViewDataSource, UITableViewD
                 // TableViewの表示を更新する
                 self.tableView.reloadData()
             }
+            //追加
+            /*
+            // コメントを監視するリスナーを登録する
+            let postsRef2 = Firestore.firestore().collection(Const.CommentPath).order(by: "commentDate", descending: true)
+            commentListener = postsRef2.addSnapshotListener() { (querySnapshot, error) in
+                if let error = error {
+                    print("DEBUG_PRINT: comment snapshotの取得が失敗しました。 \(error)")
+                    return
+                }
+                // 取得したdocumentをもとにCommentDataを作成し、postArrayの配列にする。
+                self.commentArray = querySnapshot!.documents.map { document in
+                    print("DEBUG_PRINT: comment document取得 \(document.documentID)")
+                    let commentData = CommentData(document: document)
+                    return commentData
+                }
+                // TableViewの表示を更新する
+                self.tableView.reloadData()
+            }*/
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("DEBUG_PRINT: viewWillDisappear")
         // listenerを削除して監視を停止する
-        listener?.remove()
+        listener?.remove()        // listenerを削除して監視を停止する
+        //commentListener?.remove()
     }
     /*
     // MARK: - Navigation

@@ -98,6 +98,58 @@
             </objects>
             <point key="canvasLocation" x="29" y="794"/>
         </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="4DM-Tb-VXn">
+            <objects>
+                <viewController storyboardIdentifier="Comment" id="bcO-nN-Lwy" customClass="CommentViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ppZ-Uw-6Cd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uGF-W3-Akf">
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IX9-nr-Ck3">
+                                <rect key="frame" x="364" y="54" width="40" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="0dc-Sg-Hds"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="checkmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="commentButton:" destination="bcO-nN-Lwy" eventType="touchUpInside" id="C5K-lV-vJh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="M0o-67-7b1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IX9-nr-Ck3" firstAttribute="top" secondItem="M0o-67-7b1" secondAttribute="top" constant="10" id="Fho-ro-1eG"/>
+                            <constraint firstItem="M0o-67-7b1" firstAttribute="trailing" secondItem="uGF-W3-Akf" secondAttribute="trailing" id="JaI-v3-Apc"/>
+                            <constraint firstItem="uGF-W3-Akf" firstAttribute="leading" secondItem="M0o-67-7b1" secondAttribute="leading" id="Opl-qd-Lca"/>
+                            <constraint firstItem="M0o-67-7b1" firstAttribute="bottom" secondItem="uGF-W3-Akf" secondAttribute="bottom" id="eVd-s8-dDS"/>
+                            <constraint firstItem="M0o-67-7b1" firstAttribute="trailing" secondItem="IX9-nr-Ck3" secondAttribute="trailing" constant="10" id="hcJ-yJ-Ohe"/>
+                            <constraint firstItem="uGF-W3-Akf" firstAttribute="top" secondItem="M0o-67-7b1" secondAttribute="top" id="hk9-vq-kbq"/>
+                            <constraint firstItem="uGF-W3-Akf" firstAttribute="top" secondItem="IX9-nr-Ck3" secondAttribute="bottom" constant="10" id="vJQ-RP-W4L"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hk9-vq-kbq"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="commentText" destination="uGF-W3-Akf" id="amb-jC-xYp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQq-po-aWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1002.8985507246377" y="1565.625"/>
+        </scene>
         <!--Post View Controller-->
         <scene sceneID="LyG-Jy-iNL">
             <objects>
@@ -337,8 +389,12 @@
     <resources>
         <image name="btn" width="300" height="40"/>
         <image name="camera" width="25" height="25"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="home" width="25" height="25"/>
         <image name="setting" width="25" height="25"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

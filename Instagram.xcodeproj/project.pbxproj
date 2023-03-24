@@ -24,6 +24,8 @@
 		B387851429CA8F6F00F74437 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387851329CA8F6F00F74437 /* PostData.swift */; };
 		B387851929CA91FF00F74437 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387851729CA91FF00F74437 /* PostTableViewCell.swift */; };
 		B387851A29CA91FF00F74437 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B387851829CA91FF00F74437 /* PostTableViewCell.xib */; };
+		B387851C29CAD95F00F74437 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387851B29CAD95F00F74437 /* CommentViewController.swift */; };
+		B387851E29CADDC300F74437 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B387851D29CADDC200F74437 /* CommentData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		B387851329CA8F6F00F74437 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		B387851729CA91FF00F74437 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		B387851829CA91FF00F74437 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		B387851B29CAD95F00F74437 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		B387851D29CADDC200F74437 /* CommentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				B387851729CA91FF00F74437 /* PostTableViewCell.swift */,
 				B387851829CA91FF00F74437 /* PostTableViewCell.xib */,
 				B387851329CA8F6F00F74437 /* PostData.swift */,
+				B387851D29CADDC200F74437 /* CommentData.swift */,
+				B387851B29CAD95F00F74437 /* CommentViewController.swift */,
 				B387851129CA856F00F74437 /* Const.swift */,
 				B38784E529C444FE00F74437 /* SceneDelegate.swift */,
 				B387850129C4468A00F74437 /* LoginViewController.swift */,
@@ -246,6 +252,8 @@
 				B387850A29C446D100F74437 /* SettingViewController.swift in Sources */,
 				B387851429CA8F6F00F74437 /* PostData.swift in Sources */,
 				B387850229C4468A00F74437 /* LoginViewController.swift in Sources */,
+				B387851E29CADDC300F74437 /* CommentData.swift in Sources */,
+				B387851C29CAD95F00F74437 /* CommentViewController.swift in Sources */,
 				B38784E429C444FE00F74437 /* AppDelegate.swift in Sources */,
 				B38784E629C444FE00F74437 /* SceneDelegate.swift in Sources */,
 				B387851229CA856F00F74437 /* Const.swift in Sources */,

@@ -14,7 +14,10 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var commentHeight: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,5 +59,33 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
+        // 追加
+        self.commentLabel.text = ""
+        if postData.comment != nil{
+            for comment in postData.comment {
+                if let date = comment.commentDate {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    let dateString = formatter.string(from: date)
+                    self.commentLabel.text! += comment.commentName! + "さん " + dateString + "\n" + comment.commentContents! + "\n"
+                }
+            }
+            /*
+            // フォントサイズを設定
+            let fontSize: CGFloat = 12.0
+            commentLabel.font = UIFont.systemFont(ofSize: fontSize)
+            // 表示可能な最大行数を無制限にする
+            commentLabel.numberOfLines = 0
+            // 文字列が width を超える場合に、単語単位で改行
+            commentLabel.lineBreakMode = .byWordWrapping
+            // 表示フレームを作成。CGSizeMake(最大幅, 最大高さ)
+            let frame = CGSize(width:250, height:250)
+            // 文字列の幅に調節したサイズを取得
+            let rect = commentLabel.sizeThatFits(frame)
+            // UILabel の width の制約に、調節済みの width を設定
+            commentHeight.constant = rect.height*/
+        }
     }
+
+
 }
